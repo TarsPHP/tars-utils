@@ -188,11 +188,14 @@ class Utils
             }
         }
         // 进行一下到Swoole配置的转换
-        if ($tarsAdapters[0]['protocol'] == 'not_tars' || $tarsAdapters[0]['protocol'] == 'not_taf') {
-            $tarsServer['servType'] = 'http';
-        } else {
-            $tarsServer['servType'] = 'tcp';
+        if(!isset($tarsServer['servType'])){
+            if ($tarsAdapters[0]['protocol'] == 'not_tars' || $tarsAdapters[0]['protocol'] == 'not_taf') {
+                $tarsServer['servType'] = 'http';
+            } else {
+                $tarsServer['servType'] = 'tcp';
+            }
         }
+
 
         $tarsServer['listen'][] = self::getEndpointInfo($tarsAdapters[0]['endpoint']);
 
