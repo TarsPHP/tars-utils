@@ -363,10 +363,6 @@ class Utils
             ],
         ];
 
-        // 把配置缓存一份
-        if (class_exists('swoole_table')) {
-            Conf::init($tarsConf);
-        }
 
         return $tarsConf;
     }
