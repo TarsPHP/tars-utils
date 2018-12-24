@@ -235,8 +235,8 @@ class Utils
         if (isset($tarsServer['backlog'])) {
             $setting['backlog'] = $tarsServer['backlog'];
         }
-        if (isset($tarsServer['log_level'])) {
-            $setting['log_level'] = $tarsServer['log_level'];
+        if (isset($tarsServer['loglevel'])) {
+            $setting['log_level'] = $tarsServer['loglevel'];
         }
         if (isset($tarsServer['heartbeat_check_interval'])) {
             $setting['heartbeat_check_interval'] = $tarsServer['heartbeat_check_interval'];
