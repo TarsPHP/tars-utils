@@ -64,3 +64,7 @@ $nodeInfo = \Tars\Utils::parseNodeInfo($locatorString);
 	'iPort' => 2345
 ]
 ```
+
+## Changelog
+### v0.3.0(2019-06-21)
+- 支持多个servant
