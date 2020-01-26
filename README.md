@@ -2,24 +2,35 @@
 # tars-utils
 -------------------
 
-`tars-utils` 是 phptars的辅助类库，主要提供如下几个功能：
-* 配置文件解析并缓存(swoole table)
-* 主控地址解析
-* node上报配置解析
+`Tar utils' is an auxiliary class library of phptars, which mainly provides the following functions:
+
+*Profile resolution and caching (swoole table)
+
+*Master address resolution
+
+*Node reporting configuration analysis
+
+
 
 ### @parseFile($configPath)
 
-配置文件解析，以`QDPHP.TARSServer.config.conf` 为例，将`conf` 文件解析成 数组形式
+
+
+For configuration file parsing, take 'qdphp. Tarsserver. Config. Conf' as an example to parse 'conf' file into array form
+
+
 
 ### @getLocatorInfo($locatorString)
 
-地址解析，示例：
+
+
+Address resolution, example:
 ```php
 $locatorString = "tars.tarsregistry.QueryObj@tcp -h 127.0.0.1 -p 17890:tcp -h 127.0.0.1 -p 17890";
 
 $locatorInfo = \Tars\Utils::getLocatorInfo($locatorString);
 ```
-得到结果如下：
+result as below：
 ```php
 [
 	'locatorName' => 'tars.tarsregistry.QueryObj',
@@ -45,14 +56,14 @@ $locatorInfo = \Tars\Utils::getLocatorInfo($locatorString);
 ```
 ### @parseNodeInfo($nodeInfo)
 
-node上报配置解析，示例：
+Node reporting configuration resolution, for example:
 ```php
 $locatorString = "tars.tarsnode.ServerObj@tcp -h 127.0.0.1 -p 2345 -t 10000";
 
 $nodeInfo = \Tars\Utils::parseNodeInfo($locatorString);
 ```
 
-得到结果如下：
+The results are as follows:
 ```php
 [
 	'objName' => 'tars.tarsnode.ServerObj',
@@ -67,4 +78,4 @@ $nodeInfo = \Tars\Utils::parseNodeInfo($locatorString);
 
 ## Changelog
 ### v0.3.0(2019-06-21)
-- 支持多个servant
+- support  Multiple servant
