@@ -1,7 +1,7 @@
 {
   "name": "phptars/tars-utils",
   "description": "tars的php辅助文件",
-  "version":"0.3.0",
+  "version":"0.3.1",
   "authors": [
     {
       "name": "Chen Liang",
@@ -15,6 +15,9 @@
   "minimum-stability": "dev",
   "require": {
     "php": ">=5.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9"
   },
   "autoload": {
     "psr-4": {

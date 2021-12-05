@@ -51,29 +51,66 @@ class Utils
         ];
     }
 
-
+    // tcp -h 127.0.0.1 -p 17890
+    // tcp -h tars-tarsregistry -p 17890
     public static function getEndpointInfo($endpoint)
     {
-        $parts = explode('-', $endpoint);
+        $endpoint = trim($endpoint, " \n\r\t");
+        $parts = explode(' ', $endpoint);
         $sHost = '';
         $sProtocol = '';
         $iPort = '';
         $iTimeout = '';
         $bIp = '';
-        foreach ($parts as $part) {
+        $index = 0;
+        while ($index < count($parts)) {
+            // endpoint info empty
+            if(empty($parts) || count($parts) == 0)
+                break;
+            $part = $parts[$index];
             if (strstr($part, 'tcp')) {
                 $sProtocol = 'tcp';
+                $index++;
+                continue;
             } elseif (strstr($part, 'udp')) {
                 $sProtocol = 'udp';
-            } elseif (strpos($part, 'h') !== false) {
-                $sHost = trim($part, " h\t\r");
-            } elseif (strpos($part, 'b') !== false) {
-                $bIp = trim($part, " b\t\r");
-            } elseif (strpos($part, 'p') !== false) {
-                $iPort = trim($part, " p\t\r");
-            } elseif (strpos($part, 't') !== false) {
-                $iTimeout = trim($part, " t\t\r");
+                $index++;
+                continue;
             }
+
+            if(strpos($part, '-h') !== false) {
+                // greedy
+                if(array_key_exists($index+1, $parts)) {
+                    $hostPart = $parts[$index+1];
+                    $sHost = trim($hostPart, " \t\r\n");
+                    $index++;
+                }
+            }
+            elseif(strpos($part, '-b') !== false) {
+                // greedy
+                if(array_key_exists($index+1, $parts)) {
+                    $ipPart = $parts[$index+1];
+                    $bIp = trim($ipPart, " \t\r\n");
+                    $index++;
+                }
+            }
+            elseif(strpos($part, '-p') !== false) {
+                // greedy
+                if(array_key_exists($index+1, $parts)) {
+                    $portPart = $parts[$index+1];
+                    $iPort = trim($portPart, " \t\r\n");
+                    $index++;
+                }
+            }
+            elseif(strpos($part, '-t') !== false) {
+                // greedy
+                if(array_key_exists($index+1, $parts)) {
+                    $timeoutPart = $parts[$index+1];
+                    $iTimeout = trim($timeoutPart, " \t\r\n");
+                    $index++;
+                }
+            }
+            $index++;
         }
 
         return [
