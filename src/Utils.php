@@ -393,7 +393,6 @@ class Utils
 
         $setting['log_file'] = $tarsServer['logpath'].$tarsServer['app'].'/'.$tarsServer['server'].'/'.
             $tarsServer['app'].'.'.$tarsServer['server'].'.log';
-        $setting['log_path'] = $tarsServer['logpath'];
 
         $tarsServer['adapters'] = $tarsAdapters;
         $tarsServer['setting'] = $setting;
